@@ -26,7 +26,7 @@ int main()
     string postfix;
     for(int i=0;i<infix.length();i++)
     {
-        if((infix[i]>='a' && infix[i]<='z') || (infix[i]>='A' && infix[i]<='Z'))
+        if((infix[i]>='a' && infix[i]<='z') || (infix[i]>='A' && infix[i]<='Z')||(infix[i]>=0 && infix[i]<=9))
         {
             postfix+=infix[i];
         }
