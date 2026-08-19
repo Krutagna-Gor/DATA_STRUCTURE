@@ -60,7 +60,7 @@ int Dequeuer()
 }
 void display()
 {
-    for(int i=0;i<=rear;i=(i+1)%s){
+    for(int i=front;i<=rear;i=(i+1)%s){
         cout<<queue[i]<<" ";
         if(i==rear)
         {

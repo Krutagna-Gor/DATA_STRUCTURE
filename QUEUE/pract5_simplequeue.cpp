@@ -53,8 +53,12 @@ int Dequeuer()
 }
 void display()
 {
-    for(int i=0;i<=rear;i++)
+    for(int i=front;i<=rear;i++)
     cout<<queue[i]<<" ";
+    if(empty())
+    {
+        cout<<"queue is empty!!!\n";
+    }
 }
 
 int main()
