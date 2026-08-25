@@ -1,11 +1,9 @@
 #include<iostream>
 using namespace std;
+#define s 50
 int main()
 {
-    int s;
     char ch;
-    cout<<"Enter the size_number of list :"<<endl;
-    cin>>s;
     int list[s];
     int key,found=0;
     int n,count=0,number,position,choice;
