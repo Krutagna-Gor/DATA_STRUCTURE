@@ -97,12 +97,44 @@ void display()
         cout<<"There is no node in linked list!!!\n";
     }
 }
+void delete_first()
+{
+    struct node *t;
+    t=first;
+    first=first->next;
+    free(t);
+}
+void delete_last()
+{
+    struct node *t,*y;
+    t=first;
+    while(t->next->next!=NULL)
+    {
+        t=t->next;
+    }
+    y=t->next;
+    t->next=y->next;
+    free(y);
+}
+void delete_pos(int pos)
+{
+    int c=1;
+    struct node *t;*y;
+    t=first;
+    while(c!=pos-1)
+    {
+        t=t->next;
+    }
+    y=t->next;
+    t->next=y->next;
+    free(y);
+}
 
 int main()
 {
     int c,n,choice,count=0;
     do
-    {
+    {}
         cout<<"Enter singly linked list operation :\n1.insert 2.display\n\nchoice:-";
         cin>>choice;
         switch(choice)
