@@ -1,5 +1,6 @@
 #include<iostream>
 using namespace std;
+
 struct node
 {
     int info;
@@ -8,140 +9,148 @@ struct node
 struct node *first=NULL;
 struct node *create_node(int x)
 {
- struct node *temp;
- temp=(struct node*)malloc(sizeof(struct node));
- temp->info=x;
- temp->next=NULL;
- return temp;
+    struct node *temp;
+    temp=(struct node *)malloc(sizeof(struct node));
+    temp->info=x;
+    temp->next=NULL;
+    return temp;
 }
-void insert_First(int x)
+void insert_first(int x)
 {
-    struct node *t;
+    
+    struct node *temp,*t;
     t=create_node(x);
-    if(first==NULL)
+    if(first!=NULL){
+    temp=first;
+    while(temp->next!=first)
     {
-     first=t;
+        temp=temp->next;
     }
-    else{
-        t->next=first;
-        first=t;
-    }
-}
-void insert_Last(int x)
-{
-    struct node *y,*t;
-    t=create_node(x);
-    if(first==NULL)
-    {
-        first=t;
-    }
-    else{
-        y=first;
-        while(y->next!=NULL)
-        {
-            y=y->next;
-        }
-        y->next=t;
-    }
-}
-void insert(int pos,int x)
-{
-  struct node *y,*t;
-  int c=1;
-  t=create_node(x);
-  if(first==NULL)
-  {
+    temp->next=t;
+    t->next=first->next;
     first=t;
-  }
-  else{
-    y=first;
-    while(c!=pos-1){
-      y=y->next;
-      c++;
+}
+else{
+    first=t;
+    t->next=first;
+}
+}
+void insert_last(int x)
+{
+    struct node *temp,*t;
+    t=create_node(x);
+    temp=first;
+    while(temp->next!=first)
+    {
+        temp=temp->next;
     }
-    t->next=y->next;
-    y->next=t;
-  }
+    t->next=temp->next;
+    temp->next=t;
+}
+void insert(int x,int pos)
+{
+    struct node *temp,*t;
+    int c=1;
+    t=create_node(x);
+    if(first!=NULL){
+    temp=first;
+    while(c!=pos-1)
+    {
+        temp=temp->next;
+        c++;
+    }
+    t->next=temp->next;
+    temp->next=t;
+}
+else{
+    first=t;
+    t->next=first;
+}
 }
 void insert_after_node(int x,int key)
 {
-    struct node *y,*t;
+    struct node *temp,*t;
     t=create_node(x);
-    if(first==NULL)
+    if(first!=NULL){
+    temp=first;
+    while(temp->info!=key)
     {
-        first=t;
+        temp=temp->next;
     }
-    else{
-        y=first;
-        while(y->info!=key)
-        {
-          y=y->next;
-        }
-        t->next=y->next;
-        y->next=t;
-    }
+    t->next=temp->next;
+    temp->next=t;
 }
-void display()
-{
-    if(first!=NULL)
-    {
-        struct node *temp;
-        temp=first;
-        while(temp!=NULL)
-        {
-            cout<<temp->info<<" ";
-            temp=temp->next;
-        }
-    }
-    else{
-        cout<<"There is no node in linked list!!!\n";
-    }
+else{
+    first=t;
+    t->next=first;
+}
 }
 void delete_first()
 {
-    struct node *t;
-    t=first;
+    struct node *temp,*t;
+    temp=t=first;
+    while(temp->next!=first)
+    {
+        temp=temp->next;
+    }
     first=first->next;
+    temp->next=first;
     free(t);
 }
 void delete_last()
 {
-    struct node *t,*y;
+    struct node *temp,*t;
     t=first;
-    while(t->next->next!=NULL)
+    while(t->next->next!=first)
     {
         t=t->next;
     }
-    y=t->next;
-    t->next=y->next;
-    free(y);
+    temp=t->next;
+    t->next=temp->next;
+    free(temp);
 }
 void delete_node(int pos)
 {
     int c=1;
-    struct node *t,*y;
+    struct node *temp,*t;
     t=first;
     while(c!=pos-1)
     {
         t=t->next;
+        c++;
     }
-    y=t->next;
-    t->next=y->next;
-    free(y);
+    temp=t->next;
+    t->next=temp->next;
+    free(temp);
 }
 void delete_after_node(int key)
 {
-    struct node *t,*y;
+    struct node *temp,*t;
     t=first;
     while(t->info!=key)
     {
         t=t->next;
     }
-    y=t->next;
-    t->next=y->next;
-    free(y);
+    temp=t->next;
+    t->next=temp->next;
+    free(temp);
 }
-
+void display()
+{
+    if(first!=NULL){
+    struct node *temp;
+    temp=first;
+   do
+   {
+        cout<<temp->info<<"\n";
+        temp=temp->next;
+   }while(temp!=first);
+   }
+   else
+   {
+      cout<<"\nlist is empty!!!\n";
+   }
+}
 int main()
 {
     int c,n,choice,count=0;
@@ -160,13 +169,13 @@ int main()
                 case 1:
                 cout<<"Enter number which you want to insert :";
                 cin>>n;
-                insert_First(n);
+                insert_first(n);
                 break;
 
                 case 2:
                 cout<<"Enter number which you want to insert :";
                 cin>>n;
-                insert_Last(n);
+                insert_last(n);
                 break;
                 
                 case 3:
@@ -193,7 +202,7 @@ int main()
                 cout<<"\ninvalid choice!!!";
              }
              break;
-
+             
              case 2:
              int Ch;
              cout<<"select option of node for delete:\n1.first 2.last 3.at any node 4.at after given node\n\nchoice:-";
@@ -228,6 +237,7 @@ int main()
                 cout<<"\ninvalid choice!!!";
              }
              break;
+
              case 3:
              display();
              break;
