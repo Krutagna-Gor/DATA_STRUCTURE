@@ -124,6 +124,7 @@ void delete_node(int pos)
     while(c!=pos-1)
     {
         t=t->next;
+        c++;
     }
     y=t->next;
     t->next=y->next;
