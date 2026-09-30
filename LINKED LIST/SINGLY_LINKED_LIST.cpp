@@ -197,7 +197,7 @@ int main()
 
              case 2:
              int Ch;
-             cout<<"select option of node for delete:\n1.first 2.last 3.at any node 4.at after given node\n\nchoice:-";
+             cout<<"select option of node for delete:\n1.first 2.last 3. any node 4.after given node\n\nchoice:-";
              cin>>Ch;
              switch(Ch)
              {
@@ -224,7 +224,6 @@ int main()
                 cin>>key;
                 delete_after_node(key);
                 break;
-
                 default:
                 cout<<"\ninvalid choice!!!";
              }
