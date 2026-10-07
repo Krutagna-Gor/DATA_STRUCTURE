@@ -8,7 +8,6 @@ struct node
     struct node *left, *right;
 };
 
-// Create a new node
 struct node *create_node(int x)
 {
     struct node *temp;
@@ -21,7 +20,6 @@ struct node *create_node(int x)
     return temp;
 }
 
-// Set node on left
 void setleft(struct node *q, int x)
 {
     struct node *p;
@@ -30,7 +28,6 @@ void setleft(struct node *q, int x)
     q->left = p;
 }
 
-// Set node on right
 void setright(struct node *q, int x)
 {
     struct node *p;
@@ -39,7 +36,6 @@ void setright(struct node *q, int x)
     q->right = p;
 }
 
-// Inorder Traversal
 void inorder(struct node *p)
 {
     if (p == NULL)
@@ -52,7 +48,6 @@ void inorder(struct node *p)
     inorder(p->right);
 }
 
-// Preorder Traversal
 void preorder(struct node *p)
 {
     if (p == NULL)
@@ -65,7 +60,6 @@ void preorder(struct node *p)
     preorder(p->right);
 }
 
-// Postorder Traversal
 void postorder(struct node *p)
 {
     if (p == NULL)
@@ -134,11 +128,9 @@ int main()
                     cout << "\nEnter node value: ";
                     cin >> x;
 
-                    // Start searching from root
                     p = root;
                     q = root;
 
-                    // Find the correct position
                     while (p != NULL)
                     {
                         q = p;
@@ -153,7 +145,6 @@ int main()
                         }
                     }
 
-                    // Insert the new node
                     if (x < q->info)
                     {
                         setleft(q, x);
