@@ -34,12 +34,12 @@ int main()
     {
         cin>>p[i];
     }
-    cout<<"your entered elents are :";
+    cout<<"your entered elemets are :";
     for(int i=0;i<n;i++)
     {
         cout<<p[i]<<" ";
     }
-    cout<<"which number you want to search through binary search?\n";
+    cout<<"\nwhich number you want to search through binary search?\n";
     cout<<"Enter key:";
     cin>>key;
     cout<<"\n\n----BINARY SEARCH----\n";
